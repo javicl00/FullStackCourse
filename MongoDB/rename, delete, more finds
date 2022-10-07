@@ -1,0 +1,54 @@
+db.posts.update({ title: 'Post One modified' }, { $inc: { likes: 1 } })
+
+//rename
+db.posts.update({ title: 'Post One modified' }, { $rename: { likes: 'views' } })
+
+//delete
+db.posts.remove({ title: 'Post One modified' })
+
+//add comment to array 
+db.posts.update({ title: 'Post 2' },
+    {
+        $set: {
+            comments: [
+                {
+                    user: 'user1',
+                    body: 'comment 1',
+                    date: Date()
+                },
+                {
+                    user: 'user2',
+                    body: 'comment 2',
+                    date: Date()
+                }
+            ]
+        }
+    })
+
+    //find comments from user1
+    db.posts.find({ //find all posts with comments from user1 
+        comments: {
+        $elemMatch: {
+            user: 'user1' 
+        } 
+    }
+    })
+
+    //indexing
+    db.posts.createIndex({ title: 'text' }) //create index for text search
+
+    //find posts with text
+    db.posts.find({ $text: { 
+        $search: 'post' 
+    } 
+}) //find posts with text 'post'
+
+//find posts with text starting with 'post T'
+db.posts.find({ $text: {
+    $search: "\"post T\"" //find posts with text 'post T' 
+}
+})
+
+db.posts.find({views: {$gte:11}})//find posts with views greater than 11
+
+

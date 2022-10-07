@@ -1,0 +1,21 @@
+db.posts.update({ title: 'Post 1' },
+    {
+        $set: {
+            title: 'Post One modified',
+            body: 'New post Two one',
+            date: Date()
+        }
+    },
+    {
+        upsert: true // if the document doesn't exist, it will be created
+    }
+)
+
+db.posts.update({ title: 'Post 1' },
+    {
+        $set: {
+            title: 'Post One modified',
+            body: 'New post Two one',
+            date: Date()
+        }
+    })

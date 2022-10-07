@@ -1,0 +1,20 @@
+db.posts.insertOne({
+    /*
+    * If I would want to insert
+    * more than one document
+    * I would use insertMany
+    * instead of insertOne
+    */
+    title: "Post 1",
+    body: "Post 1 body",
+    category: "News",
+    likes: 4,
+    tags: ["news", "events"],
+    user: {
+        username: "user1",
+        status: "active"
+    },
+    date: Date(),
+    comments: ['comment 1', 'comment 2']
+
+})
