@@ -19,7 +19,8 @@
     "mongoose": "*",
     "nodemon": "*",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+     "aws-sdk": "*"
   },
   "author": "Javier Cordero",
   "license": "ISC"
